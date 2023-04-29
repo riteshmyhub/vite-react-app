@@ -1,8 +1,8 @@
 import React from "react";
-import useProfile from "./useProfile";
+import { useSelector } from "react-redux";
 
 export default function Profile() {
-   const { user } = useProfile();
+   const { user } = useSelector((state) => state.auth);
    return (
       <div>
          <h4>{JSON.stringify(user)}</h4>

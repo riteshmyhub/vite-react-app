@@ -3,11 +3,11 @@ import Login from "../pages/auth/login/page";
 import Register from "../pages/auth/register/page";
 import Home from "../pages/home/page";
 import NotFound from "../pages/404/page";
-import Admin from "../pages/admin/page";
 import Profile from "../pages/profile/page";
 import AuthGuard from "../guards/AuthGuard";
 import Users from "../pages/users/page";
 import UserInfo from "../pages/user-info/page";
+import Admin from "../pages/admin/page";
 
 export default function PageRoutes() {
    return (

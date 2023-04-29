@@ -1,1 +1,2 @@
-npm i @reduxjs/toolkit axios react react-dom react-redux react-router-dom styled-components
+npm i @reduxjs/toolkit axios react react-dom react-router-dom styled-components
+npm i @reduxjs/toolkit react-redux

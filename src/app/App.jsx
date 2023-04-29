@@ -3,6 +3,7 @@ import PageRoutes from "./routes/routes";
 import Navbar from "./shared/components/Navbar";
 import AuthService from "./redux-toolkit/services/auth.service";
 import { useDispatch, useSelector } from "react-redux";
+import Loading from "./shared/components/Loading";
 
 export default function App() {
    const { _user_on_load } = new AuthService();
@@ -16,7 +17,7 @@ export default function App() {
    }, []);
 
    return root_loading ? (
-      "loading..."
+      <Loading />
    ) : (
       <>
          <Navbar />

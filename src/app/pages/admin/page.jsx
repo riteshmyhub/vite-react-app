@@ -1,7 +1,16 @@
-import React from "react";
-import useAdmin from "./useAdmin";
+import React, { useState, useEffect } from "react";
 
 export default function Admin() {
-   const { text } = useAdmin();
-   return <div>{text}</div>;
+   const [text, setText] = useState(null);
+
+   useEffect(() => {
+      setText("Admin component work!");
+      return () => {};
+   }, []);
+
+   return (
+      <div>
+         <p>{text}</p>
+      </div>
+   );
 }

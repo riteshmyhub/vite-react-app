@@ -1,10 +1,32 @@
-import React from "react";
-import useUserInfo from "./useUserInfo";
+import Loading from "../../shared/components/Loading";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 export default function UserInfo() {
-   const { userInfo } = useUserInfo();
+   const [userInfo, setUserInfo] = useState({});
+   const [loading, setLoading] = useState(true);
+   const { id } = useParams();
+   const _get_user_info = async (id) => {
+      try {
+         setLoading(true);
+         const { data } = await axios.get(`https://dummyjson.com/users/${id}`);
+         setUserInfo(data);
+         setLoading(false);
+      } catch (error) {
+         setLoading(false);
+      }
+   };
+   useEffect(() => {
+      if (id) {
+         _get_user_info(id);
+      }
+      return () => {};
+   }, [id]);
 
-   return (
+   return loading ? (
+      <Loading />
+   ) : (
       <div style={{ padding: "10px" }}>
          <div className="card">
             <img src={userInfo?.image} alt="no image" style={{ width: "200px", display: "block", margin: "auto" }} />

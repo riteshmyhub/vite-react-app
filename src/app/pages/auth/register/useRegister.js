@@ -16,7 +16,7 @@ export default function useRegister() {
          ...formValues,
          [name]: value,
       });
-   };
+   }; 
    const handleSubmit = (e) => {
       e.preventDefault();
       dispatch(_register(formValues));
