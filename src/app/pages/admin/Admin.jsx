@@ -4,7 +4,7 @@ export default function Admin() {
    const [text, setText] = useState(null);
 
    useEffect(() => {
-      setText("Admin component work!");
+      setText("PlaceHolder component work!");
       return () => {};
    }, []);
 

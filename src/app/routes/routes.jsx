@@ -1,13 +1,12 @@
 import { Navigate, Route, Routes, Outlet as RouterOutlet, useParams } from "react-router-dom";
 import Login from "../pages/auth/login/page";
 import Register from "../pages/auth/register/page";
-import Home from "../pages/home/page";
 import NotFound from "../pages/404/page";
 import Profile from "../pages/profile/page";
 import AuthGuard from "../guards/AuthGuard";
-import Users from "../pages/users/page";
 import UserInfo from "../pages/user-info/page";
-import Admin from "../pages/admin/page";
+import Admin from "../pages/admin/Admin";
+import Home from "../pages/home/Home";
 
 export default function PageRoutes() {
    return (
@@ -20,8 +19,7 @@ export default function PageRoutes() {
 
          {/* home */}
          <Route path="/" element={<Home />} caseSensitive />
-         <Route path="users" element={<Users />} caseSensitive />
-         <Route path="users/:id" element={<UserInfo />} caseSensitive />
+         <Route path="user/:id" element={<UserInfo />} caseSensitive />
 
          {/* dashboard: (user) and also (user) */}
          <Route element={<AuthGuard allowedRoles={["user", "admin"]} />}>

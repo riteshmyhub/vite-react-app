@@ -1,32 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
+import React from "react";
+import useHome from "./useHome";
 import Loading from "../../shared/components/Loading";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-export default function Users() {
-   const [users, setUsers] = useState([]);
-   const [loading, setLoading] = useState(false);
+export default function Home() {
+   const { loading, users } = useHome();
    const navigate = useNavigate();
-   const _user_list = async () => {
-      try {
-         setLoading(true);
-         const { data } = await axios.get("https://dummyjson.com/users", {
-            params: {
-               limit: 100,
-            },
-         });
-         setUsers(data?.users);
-         setLoading(false);
-      } catch (error) {
-         setLoading(false);
-      }
-   };
-
-   useEffect(() => {
-      _user_list();
-      return () => {};
-   }, []);
-
    return (
       <>
          {loading ? (
@@ -49,7 +28,7 @@ export default function Users() {
                         </h2>
                         <h3>{user?.email}</h3>
                         <div className="text-center">
-                           <button onClick={() => navigate(`/users/${user?.id}`)}>User Detail</button>
+                           <button onClick={() => navigate(`/user/${user?.id}`)}>User Detail</button>
                         </div>
                      </div>
                   </React.Fragment>

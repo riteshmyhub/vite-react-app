@@ -32,9 +32,6 @@ export default function Navbar() {
                <li>
                   <NavLink to="/">home</NavLink>
                </li>
-               <li>
-                  <NavLink to="users">users</NavLink>
-               </li>
                {user ? (
                   <>
                      <li>
