@@ -1,37 +1,31 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import { useLocation, Outlet as RouterOutlet, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Profile from "../pages/dashboard/profile/Profile";
 
-// const api = {
-//    loading: false,
-//    user: {
-//       profile: { name: "testuser" },
-//       allowRoles: ["user", "admin"],
-//    },
-// };
+export default function AuthGuard({ clientRoles }) {
+   const { loading, user } = useSelector((state) => state.authReducer);
 
-export default function AuthGuard({ allowedRoles }) {
-   const { location } = useLocation();
+   const location = useLocation();
    const token = localStorage.getItem("token");
-   //const { loading, user } = api;
-   const { root_loading, user } = useSelector((state) => state.auth);
+
    useEffect(() => {
       return () => {};
    }, []);
 
-   if (root_loading) {
+   if (loading) {
       return <div>auth checking....</div>;
    } else {
       if (token && user) {
          const { allowRoles, profile } = user;
-         if (allowRoles.find((role) => allowedRoles?.includes(role))) {
+         if (allowRoles.find((role) => clientRoles?.includes(role))) {
             if (profile?.name) {
                return <RouterOutlet />;
             } else {
-               return "please create profile";
+               return <Profile />;
             }
          } else {
-            return <p>you are unauthorized for admin page</p>;
+            return <p>you are unauthorized for page</p>;
          }
       } else {
          return <Navigate to="/auth" state={{ form: location }} replace />;

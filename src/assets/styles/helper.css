@@ -8,6 +8,9 @@
    justify-content: flex-start;
    align-items: center;
 }
+.position-relative {
+   position: relative;
+}
 .center-y-end-x {
    display: flex;
    justify-content: flex-end;
@@ -25,10 +28,10 @@
 .text-white {
    color: white !important;
 }
-.text-success {
+.text-done {
    color: #28a745;
 }
-.text-danger {
+.text-error {
    color: #ee4a19 !important;
 }
 .text-gray {
@@ -42,19 +45,6 @@
 }
 .t-t-l {
    text-transform: lowercase;
-}
-.badge {
-   display: inline-block;
-   padding: 0.35em 0.65em;
-   font-size: 0.75em;
-   font-weight: 700;
-   line-height: 1;
-   color: white;
-   text-align: center;
-   white-space: nowrap;
-   vertical-align: baseline;
-   border-radius: 0.25rem;
-   background: #7952b3;
 }
 .d-block {
    display: block;
@@ -74,9 +64,12 @@
 .cursor-pointer {
    cursor: pointer;
 }
+.w-100 {
+   width: 100%;
+}
 .h-100 {
    height: 100%;
 }
-.w-100 {
-   width: 100%;
+.h-100vh {
+   height: 100vh;
 }

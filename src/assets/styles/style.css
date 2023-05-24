@@ -1,7 +1,10 @@
-@import url("app.css");
-@import url("helper.css");
+@import url("./helper.css");
+@import url("./app.css");
+body {
+   margin: 0;
+   padding: 0;
+}
 * {
    margin: 0;
    padding: 0;
-   box-sizing: border-box;
 }

@@ -1,17 +1,21 @@
-import { Navigate, Route, Routes, Outlet as RouterOutlet, useParams } from "react-router-dom";
-import Login from "../pages/auth/login/page";
-import Register from "../pages/auth/register/page";
-import NotFound from "../pages/404/page";
-import Profile from "../pages/profile/page";
+import { Navigate, Route, Routes } from "react-router-dom";
 import AuthGuard from "../guards/AuthGuard";
-import UserInfo from "../pages/user-info/page";
-import Admin from "../pages/admin/Admin";
 import Home from "../pages/home/Home";
+import NotFound from "../pages/404/NotFound";
+import AdminLayout from "../pages/admin/admin.layout";
+import ProductInfo from "../pages/product-info/ProductInfo";
+import Login from "../pages/auth/login/Login";
+import Register from "../pages/auth/register/Register";
+import DashboardLayout from "../pages/dashboard/dashboard.layout";
+import Profile from "../pages/dashboard/profile/Profile";
+import Overview from "../pages/admin/overview/Overview";
+import AuthLayout from "../pages/auth/auth.layout";
+import Products from "../pages/products/Products";
 
 export default function PageRoutes() {
    return (
       <Routes>
-         <Route path="auth" element={<RouterOutlet />} caseSensitive>
+         <Route path="auth" element={<AuthLayout />} caseSensitive>
             <Route index element={<Navigate to="login" replace />} caseSensitive />
             <Route path="login" element={<Login />} caseSensitive />
             <Route path="register" element={<Register />} caseSensitive />
@@ -19,19 +23,23 @@ export default function PageRoutes() {
 
          {/* home */}
          <Route path="/" element={<Home />} caseSensitive />
-         <Route path="user/:id" element={<UserInfo />} caseSensitive />
+         <Route path="products" element={<Products />} caseSensitive />
+         <Route path="products/:id" element={<ProductInfo />} caseSensitive />
 
-         {/* dashboard: (user) and also (user) */}
-         <Route element={<AuthGuard allowedRoles={["user", "admin"]} />}>
-            <Route path="dashboard" element={<RouterOutlet />} caseSensitive>
+         {/* dashboard: (user) and also (admin) */}
+         <Route element={<AuthGuard clientRoles={["user", "admin"]} />}>
+            <Route path="dashboard" element={<DashboardLayout />} caseSensitive>
                <Route index element={<Navigate to="profile" replace />} caseSensitive />
                <Route path="profile" element={<Profile />} caseSensitive />
             </Route>
          </Route>
 
          {/* only for (admin) */}
-         <Route element={<AuthGuard allowedRoles={["admin"]} />}>
-            <Route path="admin" element={<Admin />} caseSensitive />
+         <Route element={<AuthGuard clientRoles={["admin"]} />}>
+            <Route path="admin" element={<AdminLayout />} caseSensitive>
+               <Route index element={<Navigate to="overview" replace />} caseSensitive />
+               <Route path="overview" element={<Overview />} caseSensitive />
+            </Route>
          </Route>
 
          {/* 404 */}

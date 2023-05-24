@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-export default function Admin() {
+export default function Overview() {
    const [text, setText] = useState(null);
 
    useEffect(() => {
-      setText("PlaceHolder component work!");
+      setText("Overview component work!");
       return () => {};
    }, []);
 
