@@ -9,10 +9,17 @@ lerna-debug.log*
 
 node_modules
 *environments
+*public
 dist
 dist-ssr
-public
 *.local
+backup.js
+vite.config.js
+README.md
+package-lock.json
+package.json
+index.html
+.eslintrc.cjs
 
 # Editor directories and files
 .vscode/*
@@ -24,10 +31,3 @@ public
 *.njsproj
 *.sln
 *.sw?
-backup.js
-vite.config.js
-README.md
-package-lock.json
-package.json
-index.html
-.eslintrc.cjs
