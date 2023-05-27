@@ -14,11 +14,11 @@ dist
 dist-ssr
 *.local
 backup.js
+index.html
 vite.config.js
 README.md
 package-lock.json
 package.json
-index.html
 .eslintrc.cjs
 
 # Editor directories and files
