@@ -1,6 +1,12 @@
-import { ProductType } from "./product.type";
 import ProductService from "../service/product.service";
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+   loading: true,
+   products: [],
+   product: null,
+   error: null,
+};
 
 export const productSlice = createSlice({
    name: "product",
