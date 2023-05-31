@@ -1,12 +1,6 @@
-import ProductService from "../services/product.service";
-import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = {
-   loading: true,
-   products: [],
-   product: null,
-   error: null,
-};
+import { ProductType } from "./product.type";
+import ProductService from "../service/product.service";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export const productSlice = createSlice({
    name: "product",
@@ -44,8 +38,6 @@ export const productSlice = createSlice({
          state.product = null;
          state.error = action.payload;
       });
-
-      // Todo:_get_products info
    },
 });
 

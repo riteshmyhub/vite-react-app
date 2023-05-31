@@ -1,13 +1,18 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useLocation, Outlet as RouterOutlet, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import Profile from "../pages/dashboard/profile/Profile";
+
+const api = {
+   loading: false,
+   user: {
+      profile: { name: "testuser" },
+      allowRoles: ["user", "admin"],
+   },
+};
 
 export default function AuthGuard({ clientRoles }) {
-   const { loading, user } = useSelector((state) => state.authReducer);
-
-   const location = useLocation();
-   const token = localStorage.getItem("token");
+   const { location } = useLocation();
+   const token = localStorage.getItem("token") || true;
+   const { loading, user } = api;
 
    useEffect(() => {
       return () => {};
@@ -18,17 +23,17 @@ export default function AuthGuard({ clientRoles }) {
    } else {
       if (token && user) {
          const { allowRoles, profile } = user;
-         if (allowRoles.find((role) => clientRoles?.includes(role))) {
+         if (allowRoles && allowRoles.find((role) => clientRoles?.includes(role))) {
             if (profile?.name) {
                return <RouterOutlet />;
             } else {
-               return <Profile />;
+               return "please create profile";
             }
          } else {
-            return <p>you are unauthorized for page</p>;
+            return <p>you are unauthorized for this page</p>;
          }
       } else {
-         return <Navigate to="/auth" state={{ form: location }} replace />;
+         return <Navigate to="/login" state={{ form: location }} replace />;
       }
    }
 }

@@ -8,12 +8,10 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-*environments
 *public
 dist
 dist-ssr
 *.local
-backup.js
 index.html
 vite.config.js
 README.md
